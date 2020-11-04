@@ -51,7 +51,7 @@
     "format": "prettier --write 'src/**/*.js' && eslint 'src/**/*.js' --fix && stylelint 'src/**/*.css' 'src/**/*.scss' --fix",
     "lint": "eslint 'src/**/*.js' && stylelint 'src/**/*.css' 'src/**/*.scss'",
     "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom --transformIgnorePatterns \"/node_modules/(?!(@geops/react-ui|jsts|ol|ole|react-spatial|mobility-toolbox-js)/).*/\""
+    "test": "react-scripts test --env=jsdom --transformIgnorePatterns \"/node_modules/(?!(@geops/react-ui|jsts|ol|ol-mapbox-style|ole|react-spatial|mobility-toolbox-js)/).*/\""
   },
   "browserslist": {
     "production": [
