@@ -18,12 +18,12 @@
     "react-i18next": "11.7.3",
     "react-icons": "3.11.0",
     "react-redux": "7.2.2",
-    "react-spatial": "1.0.9",
+    "react-spatial": "1.0.10",
     "redux": "4.0.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.11.5",
-    "@testing-library/react": "10.4.9",
+    "@testing-library/react": "11.1.1",
     "eslint-config-airbnb": "18.2.0",
     "eslint-config-prettier": "6.15.0",
     "eslint-plugin-cypress": "2.11.2",
@@ -37,7 +37,7 @@
     "jest-serializer-html": "7.0.0",
     "lint-staged": "10.5.1",
     "prettier": "2.1.2",
-    "react-scripts": "3.4.4",
+    "react-scripts": "4.0.0",
     "redux-mock-store": "1.5.4",
     "redux-thunk": "2.3.0",
     "stylelint": "13.7.2",
