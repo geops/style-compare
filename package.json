@@ -1,6 +1,15 @@
 {
   "name": "style-compare",
   "version": "0.1.0",
+  "homepage": "https://geops.github.io/style-compare",
+  "keywords": [
+    "compare",
+    "mapbox",
+    "mobility-toolbox-js",
+    "react",
+    "react-spatial",
+    "styles"
+  ],
   "dependencies": {
     "@material-ui/core": "4.11.0",
     "@material-ui/icons": "4.9.1",
@@ -33,6 +42,7 @@
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.2.0",
     "fixpack": "3.0.6",
+    "gh-pages": "^3.1.0",
     "husky": "4.3.0",
     "jest-serializer-html": "7.0.0",
     "lint-staged": "10.5.1",
@@ -47,9 +57,11 @@
   },
   "scripts": {
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "format": "prettier --write 'src/**/*.js' && eslint 'src/**/*.js' --fix && stylelint 'src/**/*.css' 'src/**/*.scss' --fix",
     "lint": "eslint 'src/**/*.js' && stylelint 'src/**/*.css' 'src/**/*.scss'",
+    "predeploy": "yarn build",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom --transformIgnorePatterns \"/node_modules/(?!(@geops/react-ui|jsts|ol|ol-mapbox-style|ole|react-spatial|mobility-toolbox-js)/).*/\""
   },
@@ -126,7 +138,7 @@
       "yarn test --bail --findRelatedTests"
     ],
     "package.json": [
-      "fixpack --sortToTop name --sortToTop description --sortToTop version --sortToTop author --sortToTop main --sortToTop proxy --sortToTop dependencies --sortToTop peerDependencies --sortToTop devDependencies --sortToTop resolutions --sortToTop scripts",
+      "fixpack --sortToTop name --sortToTop description --sortToTop version --sortToTop author --sortToTop homepage --sortToTop keywords  --sortToTop main --sortToTop proxy --sortToTop dependencies --sortToTop peerDependencies --sortToTop devDependencies --sortToTop resolutions --sortToTop scripts",
       "git add"
     ],
     "src/**/*.{css,scss}": [
