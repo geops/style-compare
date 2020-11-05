@@ -57,7 +57,6 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "format": "prettier --write 'src/**/*.js' && eslint 'src/**/*.js' --fix && stylelint 'src/**/*.css' 'src/**/*.scss' --fix",
     "lint": "eslint 'src/**/*.js' && stylelint 'src/**/*.css' 'src/**/*.scss'",
