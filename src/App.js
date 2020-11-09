@@ -5,7 +5,7 @@ import OLMap from 'ol/Map';
 import { defaults as defaultInteractions } from 'ol/interaction';
 import Map from './components/Map';
 
-import './App.sass';
+import './App.scss';
 
 const useStyles = makeStyles(() => ({
   container: { height: '100%' },
