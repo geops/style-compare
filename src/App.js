@@ -3,7 +3,6 @@ import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import OLMap from 'ol/Map';
 import { defaults as defaultInteractions } from 'ol/interaction';
-import Zoom from 'react-spatial/components/Zoom';
 import Map from './components/Map';
 
 import './App.sass';
@@ -17,7 +16,15 @@ const useStyles = makeStyles(() => ({
 export default function App() {
   const classes = useStyles();
 
-  const map = new OLMap({
+  const map1 = new OLMap({
+    controls: [],
+    interactions: defaultInteractions({
+      altShiftDragRotate: false,
+      pinchRotate: false,
+    }),
+  });
+
+  const map2 = new OLMap({
     controls: [],
     interactions: defaultInteractions({
       altShiftDragRotate: false,
@@ -28,12 +35,11 @@ export default function App() {
   return (
     <Grid container className={classes.container}>
       <Grid item xs={6} className={classes.mapLeft}>
-        <Map permalinkParam="left" />
+        <Map permalinkParam="left" map={map1} />
       </Grid>
       <Grid item xs={6} className={classes.mapRight}>
-        <Map permalinkParam="right" map={map} />
+        <Map permalinkParam="right" map={map2} />
       </Grid>
-      <Zoom map={map} />
     </Grid>
   );
 }

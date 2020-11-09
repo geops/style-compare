@@ -5,6 +5,7 @@ import OLMap from 'ol/Map';
 import { MapboxLayer } from 'mobility-toolbox-js/ol';
 import BasicMap from 'react-spatial/components/BasicMap';
 import { FormLabel, TextField, makeStyles } from '@material-ui/core';
+import Zoom from 'react-spatial/components/Zoom';
 import qs from 'query-string';
 import { setCenter, setZoom } from '../../store/actions';
 
@@ -90,6 +91,7 @@ const Map = ({ map, permalinkParam }) => {
           }}
         />
       </div>
+      <Zoom map={map} />
     </>
   );
 };
