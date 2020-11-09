@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import OLMap from 'ol/Map';
 import { MapboxLayer } from 'mobility-toolbox-js/ol';
 import BasicMap from 'react-spatial/components/BasicMap';
-import { FormLabel, TextField, makeStyles } from '@material-ui/core';
+import { TextField, makeStyles } from '@material-ui/core';
 import Zoom from 'react-spatial/components/Zoom';
 import qs from 'query-string';
 import { setCenter, setZoom } from '../../store/actions';
@@ -27,19 +27,12 @@ const useStyles = makeStyles(() => ({
     right: 0,
     margin: 'auto',
   },
-  label: {
-    paddingLeft: '5px',
-  },
-  input: {
-    width: '100%',
-  },
 }));
 
 const Map = ({ map, permalinkParam }) => {
   // Store
   const center = useSelector((state) => state.center);
   const zoom = useSelector((state) => state.zoom);
-  const [focused, onFocused] = useState(false);
   const [tilesUrl, setTilesUrl] = useState(
     qs.parse(window.location.search)[permalinkParam] || '',
   );
@@ -76,16 +69,18 @@ const Map = ({ map, permalinkParam }) => {
         }}
       />
       <div className={classes.inputWrapper}>
-        <FormLabel focused={focused} className={classes.label}>
-          GL Style URL
-        </FormLabel>
         <TextField
-          className={classes.input}
-          onFocus={() => onFocused(true)}
-          onBlur={() => onFocused(false)}
-          placeholder="Paste the URL to a GL Style JSON here"
-          variant="outlined"
+          id="outlined-full-width"
+          label="GL Style URL"
           value={tilesUrl}
+          style={{ margin: 8 }}
+          placeholder="Paste the URL to a GL Style JSON here"
+          fullWidth
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
           onChange={(evt) => {
             setTilesUrl(evt.target.value);
           }}
