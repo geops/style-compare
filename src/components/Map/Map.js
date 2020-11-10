@@ -26,6 +26,13 @@ const useStyles = makeStyles(() => ({
     left: 0,
     right: 0,
     margin: 'auto',
+
+    '& label': {
+      userSelect: 'none',
+    },
+  },
+  textField: {
+    userSelect: 'none',
   },
 }));
 
@@ -77,6 +84,7 @@ const Map = ({ map, permalinkParam }) => {
           placeholder="Paste the URL to a GL Style JSON here"
           fullWidth
           margin="normal"
+          className={classes.textField}
           InputLabelProps={{
             shrink: true,
           }}
