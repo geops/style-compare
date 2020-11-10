@@ -1,4 +1,4 @@
-name: Node CI
+name: Lint and Test
 
 on: [push]
 
@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10, 12, 14]
+        node-version: [14]
 
     steps:
       - uses: actions/checkout@v1
@@ -22,6 +22,5 @@ jobs:
           yarn install
           yarn lint
           yarn test
-          yarn build
         env:
           CI: true
