@@ -1,7 +1,7 @@
 # style-compare
 
 
-This project allows to compare 2 mapbox styles .
+This project allows to compare 2 mapbox styles . See demo: https://geops.github.io/style-compare/.
 
 ## Getting Started
 
