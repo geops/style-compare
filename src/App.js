@@ -1,9 +1,9 @@
 // Core Functions
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Grid, makeStyles } from '@material-ui/core';
-import OLMap from 'ol/Map';
-import { defaults as defaultInteractions } from 'ol/interaction';
 import Map from './components/Map';
+import Permalink from './components/Permalink';
 
 import './App.scss';
 
@@ -13,33 +13,24 @@ const useStyles = makeStyles(() => ({
   mapRight: { position: 'relative', borderleft: '5px solid black' },
 }));
 
-export default function App() {
+const App = () => {
   const classes = useStyles();
-
-  const map1 = new OLMap({
-    controls: [],
-    interactions: defaultInteractions({
-      altShiftDragRotate: false,
-      pinchRotate: false,
-    }),
-  });
-
-  const map2 = new OLMap({
-    controls: [],
-    interactions: defaultInteractions({
-      altShiftDragRotate: false,
-      pinchRotate: false,
-    }),
-  });
+  const mapLeft = useSelector((state) => state.mapLeft);
+  const mapRight = useSelector((state) => state.mapRight);
 
   return (
-    <Grid container className={classes.container}>
-      <Grid item xs={6} className={classes.mapLeft}>
-        <Map permalinkParam="left" map={map1} />
+    <>
+      <Grid container className={classes.container}>
+        <Grid item xs={6} className={classes.mapLeft}>
+          <Map permalinkParam="left" map={mapLeft} />
+        </Grid>
+        <Grid item xs={6} className={classes.mapRight}>
+          <Map permalinkParam="right" map={mapRight} />
+        </Grid>
       </Grid>
-      <Grid item xs={6} className={classes.mapRight}>
-        <Map permalinkParam="right" map={map2} />
-      </Grid>
-    </Grid>
+      <Permalink map={mapLeft} />
+    </>
   );
-}
+};
+
+export default App;
