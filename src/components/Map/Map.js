@@ -64,8 +64,18 @@ const Map = ({ map, permalinkParam }) => {
         center={center}
         zoom={zoom}
         onMapMoved={(evt) => {
-          dispatch(setCenter(evt.map.getView().getCenter()));
-          dispatch(setZoom(evt.map.getView().getZoom()));
+          const newZoom = evt.map.getView().getZoom();
+          const newCenter = evt.map.getView().getCenter();
+          if (
+            (!center && newCenter) ||
+            center[0] !== newCenter[0] ||
+            center[1] !== newCenter[1]
+          ) {
+            dispatch(setCenter(newCenter));
+          }
+          if (zoom !== newZoom) {
+            dispatch(setZoom(newZoom));
+          }
         }}
       />
       <div className={classes.inputWrapper}>

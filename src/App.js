@@ -1,9 +1,11 @@
 // Core Functions
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Grid, makeStyles } from '@material-ui/core';
-import OLMap from 'ol/Map';
-import { defaults as defaultInteractions } from 'ol/interaction';
+import Permalink from 'react-spatial/components/Permalink';
+import qs from 'query-string';
 import Map from './components/Map';
+import { setCenter, setZoom } from './store/actions';
 
 import './App.scss';
 
@@ -13,33 +15,44 @@ const useStyles = makeStyles(() => ({
   mapRight: { position: 'relative', borderleft: '5px solid black' },
 }));
 
-export default function App() {
+const App = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const mapLeft = useSelector((state) => state.mapLeft);
+  const mapRight = useSelector((state) => state.mapRight);
 
-  const map1 = new OLMap({
-    controls: [],
-    interactions: defaultInteractions({
-      altShiftDragRotate: false,
-      pinchRotate: false,
-    }),
-  });
+  useEffect(() => {
+    const parameters = {
+      ...qs.parse(window.location.search),
+    };
 
-  const map2 = new OLMap({
-    controls: [],
-    interactions: defaultInteractions({
-      altShiftDragRotate: false,
-      pinchRotate: false,
-    }),
-  });
+    const z = parseFloat(parameters.z);
+    const x = parseFloat(parameters.x);
+    const y = parseFloat(parameters.y);
+
+    if (x && y) {
+      dispatch(setCenter([x, y]));
+    }
+
+    if (z) {
+      dispatch(setZoom(z));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <Grid container className={classes.container}>
-      <Grid item xs={6} className={classes.mapLeft}>
-        <Map permalinkParam="left" map={map1} />
+    <>
+      <Grid container className={classes.container}>
+        <Grid item xs={6} className={classes.mapLeft}>
+          <Map permalinkParam="left" map={mapLeft} />
+        </Grid>
+        <Grid item xs={6} className={classes.mapRight}>
+          <Map permalinkParam="right" map={mapRight} />
+        </Grid>
       </Grid>
-      <Grid item xs={6} className={classes.mapRight}>
-        <Map permalinkParam="right" map={map2} />
-      </Grid>
-    </Grid>
+      <Permalink map={mapLeft} />
+    </>
   );
-}
+};
+
+export default App;
