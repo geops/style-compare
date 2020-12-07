@@ -9,8 +9,8 @@ import './App.scss';
 
 const useStyles = makeStyles(() => ({
   container: { height: '100%' },
-  mapLeft: { position: 'relative', borderRight: '5px solid black' },
-  mapRight: { position: 'relative', borderleft: '5px solid black' },
+  mapLeft: { position: 'relative', borderRight: '1px solid lightgray' },
+  mapRight: { position: 'relative', borderleft: '1px solid lightgray' },
 }));
 
 const App = () => {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import OLMap from 'ol/Map';
 import { MapboxLayer } from 'mobility-toolbox-js/ol';
 import BasicMap from 'react-spatial/components/BasicMap';
-import { TextField, makeStyles } from '@material-ui/core';
+import { TextField, Grid, makeStyles } from '@material-ui/core';
 import Zoom from 'react-spatial/components/Zoom';
 import qs from 'query-string';
 import { setCenter, setZoom } from '../../store/actions';
@@ -19,13 +19,12 @@ const useStyles = makeStyles(() => ({
     height: '100%',
   },
   inputWrapper: {
-    padding: 15,
     background: 'white',
     position: 'absolute',
     top: 0,
     left: 0,
-    right: 0,
-    margin: 'auto',
+    padding: 15,
+    paddingTop: 8,
   },
 }));
 
@@ -68,24 +67,25 @@ const Map = ({ map, permalinkParam }) => {
           dispatch(setZoom(evt.map.getView().getZoom()));
         }}
       />
-      <div className={classes.inputWrapper}>
-        <TextField
-          id="outlined-full-width"
-          label="GL Style URL"
-          value={tilesUrl}
-          style={{ margin: 8 }}
-          placeholder="Paste the URL to a GL Style JSON here"
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-          onChange={(evt) => {
-            setTilesUrl(evt.target.value);
-          }}
-        />
-      </div>
+      <Grid container className={classes.inputWrapper}>
+        <Grid item xs={12}>
+          <TextField
+            id="outlined-full-width"
+            label="GL Style URL"
+            value={tilesUrl}
+            placeholder="Paste the URL to a GL Style JSON here"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            onChange={(evt) => {
+              setTilesUrl(evt.target.value);
+            }}
+          />
+        </Grid>
+      </Grid>
       <Zoom map={map} />
     </>
   );
