@@ -33,7 +33,8 @@ const Map = ({ map, permalinkParam }) => {
   const center = useSelector((state) => state.center);
   const zoom = useSelector((state) => state.zoom);
   const [tilesUrl, setTilesUrl] = useState(
-    qs.parse(window.location.search)[permalinkParam] || '',
+    qs.parse(window.location.search)[permalinkParam] ||
+      'https://maps.geops.io/styles/base_bright_v2/style.json',
   );
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -63,6 +64,10 @@ const Map = ({ map, permalinkParam }) => {
         center={center}
         zoom={zoom}
         onMapMoved={(evt) => {
+          // https://maps.geops.io/styles/base_bright_v2/style.json?key=5cc87b12d7c5370001c1d655352830d2fef24680ae3a1cda54418cb8
+          if (baseLayer.mbMap && baseLayer.mbMap.loaded()) {
+            baseLayer.mbMap.showCollisionBoxes = true;
+          }
           dispatch(setCenter(evt.map.getView().getCenter()));
           dispatch(setZoom(evt.map.getView().getZoom()));
         }}

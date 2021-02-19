@@ -16,17 +16,17 @@ const useStyles = makeStyles(() => ({
 const App = () => {
   const classes = useStyles();
   const mapLeft = useSelector((state) => state.mapLeft);
-  const mapRight = useSelector((state) => state.mapRight);
+  // const mapRight = useSelector((state) => state.mapRight);
 
   return (
     <>
       <Grid container className={classes.container}>
-        <Grid item xs={6} className={classes.mapLeft}>
+        <Grid item xs={12} className={classes.mapLeft}>
           <Map permalinkParam="left" map={mapLeft} />
         </Grid>
-        <Grid item xs={6} className={classes.mapRight}>
+        {/* <Grid item xs={6} className={classes.mapRight}>
           <Map permalinkParam="right" map={mapRight} />
-        </Grid>
+        </Grid> */}
       </Grid>
       <Permalink map={mapLeft} />
     </>
