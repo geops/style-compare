@@ -1,26 +1,54 @@
 // Core Functions
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Grid, makeStyles } from '@material-ui/core';
+import { SwapHoriz } from '@material-ui/icons';
+import { Grid, IconButton, makeStyles } from '@material-ui/core';
 import Map from './components/Map';
 import Permalink from './components/Permalink';
 
 import './App.scss';
 
 const useStyles = makeStyles(() => ({
-  container: { height: '100%' },
-  mapLeft: { position: 'relative', borderRight: '1px solid lightgray' },
-  mapRight: { position: 'relative', borderleft: '1px solid lightgray' },
+  container: {
+    height: '100%',
+    '& > .MuiGrid-item': {
+      borderLeft: '1px solid lightgray',
+      borderRight: '1px solid lightgray',
+    },
+  },
+  button: {
+    position: 'absolute',
+    inset: '25px 0 0 ',
+    bottom: 'unset',
+    width: 50,
+    margin: 'auto',
+    zIndex: 1000,
+  },
+  mapLeft: { position: 'relative' },
+  mapRight: { position: 'relative' },
 }));
 
-const App = () => {
+function App() {
   const classes = useStyles();
   const mapLeft = useSelector((state) => state.mapLeft);
   const mapRight = useSelector((state) => state.mapRight);
+  const [swap, setSwap] = useState(false);
 
   return (
     <>
-      <Grid container className={classes.container}>
+      <IconButton
+        className={classes.button}
+        onClick={() => {
+          setSwap(!swap);
+        }}
+      >
+        <SwapHoriz />
+      </IconButton>
+      <Grid
+        container
+        direction={swap ? 'row-reverse' : 'row'}
+        className={classes.container}
+      >
         <Grid item xs={6} className={classes.mapLeft}>
           <Map permalinkParam="left" map={mapLeft} />
         </Grid>
@@ -31,6 +59,6 @@ const App = () => {
       <Permalink map={mapLeft} />
     </>
   );
-};
+}
 
 export default App;

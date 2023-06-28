@@ -6,3 +6,13 @@ import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only';
 import 'jest-canvas-mock';
 
 global.URL.createObjectURL = jest.fn(() => 'fooblob');
+
+/* eslint-disable */
+global.ResizeObserver = class ResizeObserver {
+  constructor(onResize) {
+    ResizeObserver.onResize = onResize;
+  }
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};

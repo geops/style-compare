@@ -11,49 +11,51 @@
     "styles"
   ],
   "dependencies": {
-    "@material-ui/core": "4.11.0",
-    "@material-ui/icons": "4.9.1",
-    "abortcontroller-polyfill": "1.5.0",
-    "i18next": "19.8.3",
-    "jest-canvas-mock": "2.3.0",
-    "mapbox-gl": "1.12.0",
-    "mobility-toolbox-js": "1.1.11",
-    "node-sass": "4.13.1",
-    "ol": "6.4.3",
-    "prop-types": "15.7.2",
-    "query-string": "^6.13.6",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-i18next": "11.7.3",
-    "react-icons": "3.11.0",
-    "react-redux": "7.2.2",
-    "react-spatial": "1.0.11",
-    "redux": "4.0.5"
+    "@material-ui/core": "4.12.4",
+    "@material-ui/icons": "4.11.3",
+    "abortcontroller-polyfill": "1.7.5",
+    "i18next": "23.2.3",
+    "jest-canvas-mock": "2.5.2",
+    "mapbox-gl": "1.13.2",
+    "maplibre-gl": "3.1.0",
+    "mobility-toolbox-js": "2.0.0-beta.82",
+    "ol": "7.4",
+    "prop-types": "15.8.1",
+    "query-string": "^8.1.0",
+    "react": "18",
+    "react-dom": "18",
+    "react-i18next": "13.0.1",
+    "react-icons": "4.10.1",
+    "react-redux": "8.1.1",
+    "react-spatial": "1.5.2",
+    "redux": "4.2.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "5.11.5",
-    "@testing-library/react": "11.1.1",
-    "eslint-config-airbnb": "18.2.0",
-    "eslint-config-prettier": "6.15.0",
-    "eslint-plugin-cypress": "2.11.2",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-jsx-a11y": "6.4.1",
-    "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-react": "7.21.5",
-    "eslint-plugin-react-hooks": "4.2.0",
-    "fixpack": "3.0.6",
-    "gh-pages": "^3.1.0",
-    "husky": "4.3.0",
-    "jest-serializer-html": "7.0.0",
-    "lint-staged": "10.5.1",
-    "prettier": "2.1.2",
-    "react-scripts": "4.0.0",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "14.0.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-cypress": "2.13.3",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "fixpack": "4.0.0",
+    "gh-pages": "5.0.0",
+    "husky": "8.0.3",
+    "is-ci": "3.0.1",
+    "jest-serializer-html": "7.1.0",
+    "lint-staged": "13.2.3",
+    "prettier": "2.8.8",
+    "react-scripts": "5.0.1",
     "redux-mock-store": "1.5.4",
-    "redux-thunk": "2.3.0",
-    "stylelint": "13.7.2",
-    "stylelint-config-recommended-scss": "4.2.0",
-    "stylelint-config-standard": "20.0.0",
-    "stylelint-scss": "3.18.0"
+    "redux-thunk": "2.4.2",
+    "sass": "1.63.6",
+    "stylelint": "15.9.0",
+    "stylelint-config-recommended-scss": "12.0.0",
+    "stylelint-config-standard": "33.0.0",
+    "stylelint-scss": "5.0.1"
   },
   "scripts": {
     "build": "react-scripts build",
@@ -61,8 +63,9 @@
     "format": "prettier --write 'src/**/*.js' && eslint 'src/**/*.js' --fix && stylelint 'src/**/*.css' 'src/**/*.scss' --fix",
     "lint": "eslint 'src/**/*.js' && stylelint 'src/**/*.css' 'src/**/*.scss'",
     "predeploy": "yarn build",
-    "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom --transformIgnorePatterns \"/node_modules/(?!(@geops/react-ui|jsts|ol|ol-mapbox-style|ole|react-spatial|mobility-toolbox-js)/).*/\""
+    "prepare": "is-ci || husky install",
+    "start": "ESLINT_NO_DEV_ERRORS=true react-scripts start",
+    "test": "react-scripts test --env=jsdom --transformIgnorePatterns \"/node_modules/(?!(@geops/react-ui|jsts|ol|ol-mapbox-style|ole|filter-obj|react-spatial|mobility-toolbox-js|quick-lru|split-on-first|query-string|decode-uri-component)/).*/\""
   },
   "browserslist": {
     "production": [
@@ -77,7 +80,6 @@
     ]
   },
   "eslintConfig": {
-    "parser": "babel-eslint",
     "env": {
       "cypress/globals": true,
       "node": true,
@@ -88,8 +90,7 @@
     "extends": [
       "airbnb",
       "airbnb/hooks",
-      "prettier",
-      "prettier/react"
+      "prettier"
     ],
     "plugins": [
       "cypress",
@@ -110,14 +111,6 @@
       "react": {
         "version": "detect"
       }
-    }
-  },
-  "husky": {
-    "hooks": {
-      "post-checkout": "yarn install --frozen-lockfile",
-      "post-merge": "yarn install --frozen-lockfile",
-      "post-rebase": "yarn install --frozen-lockfile",
-      "pre-commit": "CI=true lint-staged   "
     }
   },
   "jest": {

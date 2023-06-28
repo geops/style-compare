@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Map = ({ map, permalinkParam }) => {
+function Map({ map, permalinkParam }) {
   // Store
   const center = useSelector((state) => state.center);
   const zoom = useSelector((state) => state.zoom);
@@ -47,19 +47,20 @@ const Map = ({ map, permalinkParam }) => {
       undefined,
       `${window.location.pathname}?${qs.stringify(params)}`,
     );
-
     // Update layer
     return new MapboxLayer({
       url: tilesUrl,
     });
   }, [tilesUrl, permalinkParam]);
 
+  const layers = useMemo(() => [baseLayer], [baseLayer]);
+
   return (
     <>
       <BasicMap
         map={map}
         className={classes.map}
-        layers={[baseLayer]}
+        layers={layers}
         center={center}
         zoom={zoom}
         onMapMoved={(evt) => {
@@ -89,7 +90,7 @@ const Map = ({ map, permalinkParam }) => {
       <Zoom map={map} />
     </>
   );
-};
+}
 
 Map.propTypes = {
   permalinkParam: PropTypes.string,

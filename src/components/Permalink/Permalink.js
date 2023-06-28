@@ -6,7 +6,7 @@ import qs from 'query-string';
 import RSPermalink from 'react-spatial/components/Permalink';
 import { setCenter, setZoom } from '../../store/actions';
 
-const Permalink = ({ map }) => {
+function Permalink({ map }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Permalink = ({ map }) => {
   }, []);
 
   return <RSPermalink map={map} />;
-};
+}
 
 Permalink.propTypes = {
   map: PropTypes.instanceOf(OLMap).isRequired,

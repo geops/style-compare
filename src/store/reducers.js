@@ -1,3 +1,4 @@
+/* eslint-disable default-param-last */
 import OLMap from 'ol/Map';
 import { defaults as defaultInteractions } from 'ol/interaction';
 
