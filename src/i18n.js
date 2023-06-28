@@ -1,7 +1,7 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import de from './translations/de.json';
-import en from './translations/en.json';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import de from "./translations/de.json";
+import en from "./translations/en.json";
 
 const resources = {
   de,
@@ -10,7 +10,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'de',
+  lng: "de",
   keySeperator: false,
   interpolation: {
     escapeValue: false,

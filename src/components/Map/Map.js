@@ -1,26 +1,26 @@
-import React, { useState, useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
-import OLMap from 'ol/Map';
-import { MapboxLayer } from 'mobility-toolbox-js/ol';
-import BasicMap from 'react-spatial/components/BasicMap';
-import { TextField, Grid, makeStyles } from '@material-ui/core';
-import Zoom from 'react-spatial/components/Zoom';
-import qs from 'query-string';
-import { setCenter, setZoom } from '../../store/actions';
+import React, { useState, useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+import OLMap from "ol/Map";
+import { MapboxLayer } from "mobility-toolbox-js/ol";
+import BasicMap from "react-spatial/components/BasicMap";
+import { TextField, Grid, makeStyles } from "@material-ui/core";
+import Zoom from "react-spatial/components/Zoom";
+import qs from "query-string";
+import { setCenter, setZoom } from "../../store/actions";
 
 // Styles
-import 'react-spatial/themes/default/index.scss';
-import 'ol/ol.css';
+import "react-spatial/themes/default/index.scss";
+import "ol/ol.css";
 
 const useStyles = makeStyles(() => ({
   map: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   inputWrapper: {
-    background: 'white',
-    position: 'absolute',
+    background: "white",
+    position: "absolute",
     top: 0,
     left: 0,
     padding: 15,
@@ -33,7 +33,7 @@ function Map({ map, permalinkParam }) {
   const center = useSelector((state) => state.center);
   const zoom = useSelector((state) => state.zoom);
   const [tilesUrl, setTilesUrl] = useState(
-    qs.parse(window.location.search)[permalinkParam] || '',
+    qs.parse(window.location.search)[permalinkParam] || "",
   );
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -98,7 +98,7 @@ Map.propTypes = {
 };
 
 Map.defaultProps = {
-  permalinkParam: 'left',
+  permalinkParam: "left",
   map: null,
 };
 

@@ -1,31 +1,31 @@
 // Core Functions
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { SwapHoriz } from '@material-ui/icons';
-import { Grid, IconButton, makeStyles } from '@material-ui/core';
-import Map from './components/Map';
-import Permalink from './components/Permalink';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { SwapHoriz } from "@material-ui/icons";
+import { Grid, IconButton, makeStyles } from "@material-ui/core";
+import Map from "./components/Map";
+import Permalink from "./components/Permalink";
 
-import './App.scss';
+import "./App.scss";
 
 const useStyles = makeStyles(() => ({
   container: {
-    height: '100%',
-    '& > .MuiGrid-item': {
-      borderLeft: '1px solid lightgray',
-      borderRight: '1px solid lightgray',
+    height: "100%",
+    "& > .MuiGrid-item": {
+      borderLeft: "1px solid lightgray",
+      borderRight: "1px solid lightgray",
     },
   },
   button: {
-    position: 'absolute',
-    inset: '25px 0 0 ',
-    bottom: 'unset',
+    position: "absolute",
+    inset: "25px 0 0 ",
+    bottom: "unset",
     width: 50,
-    margin: 'auto',
+    margin: "auto",
     zIndex: 1000,
   },
-  mapLeft: { position: 'relative' },
-  mapRight: { position: 'relative' },
+  mapLeft: { position: "relative" },
+  mapRight: { position: "relative" },
 }));
 
 function App() {
@@ -46,7 +46,7 @@ function App() {
       </IconButton>
       <Grid
         container
-        direction={swap ? 'row-reverse' : 'row'}
+        direction={swap ? "row-reverse" : "row"}
         className={classes.container}
       >
         <Grid item xs={6} className={classes.mapLeft}>

@@ -67,18 +67,13 @@
     "start": "ESLINT_NO_DEV_ERRORS=true react-scripts start",
     "test": "react-scripts test --env=jsdom --transformIgnorePatterns \"/node_modules/(?!(@geops/react-ui|jsts|ol|ol-mapbox-style|ole|filter-obj|react-spatial|mobility-toolbox-js|quick-lru|split-on-first|query-string|decode-uri-component)/).*/\""
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all",
+    "not ie <= 11",
+    "not android < 5"
+  ],
   "eslintConfig": {
     "env": {
       "cypress/globals": true,
@@ -139,8 +134,7 @@
     ]
   },
   "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true
+    "trailingComma": "all"
   },
   "stylelint": {
     "plugins": [

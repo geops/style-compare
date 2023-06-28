@@ -1,19 +1,19 @@
 /* eslint-disable no-underscore-dangle */
 // Core Dependencies
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import reducers from './store/reducers';
-import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import reducers from "./store/reducers";
+import "abortcontroller-polyfill/dist/abortcontroller-polyfill-only";
 
-import './i18n';
+import "./i18n";
 
 // Root Component
-import App from './App';
+import App from "./App";
 
 // Others
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from "./serviceWorker";
 
 // Store
 const store = createStore(
@@ -27,7 +27,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change

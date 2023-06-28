@@ -2,10 +2,10 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only';
-import 'jest-canvas-mock';
+import "abortcontroller-polyfill/dist/abortcontroller-polyfill-only";
+import "jest-canvas-mock";
 
-global.URL.createObjectURL = jest.fn(() => 'fooblob');
+global.URL.createObjectURL = jest.fn(() => "fooblob");
 
 /* eslint-disable */
 global.ResizeObserver = class ResizeObserver {

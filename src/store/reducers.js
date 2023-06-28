@@ -1,8 +1,8 @@
 /* eslint-disable default-param-last */
-import OLMap from 'ol/Map';
-import { defaults as defaultInteractions } from 'ol/interaction';
+import OLMap from "ol/Map";
+import { defaults as defaultInteractions } from "ol/interaction";
 
-import { SET_CENTER, SET_ZOOM } from './actions';
+import { SET_CENTER, SET_ZOOM } from "./actions";
 
 const reducers = (
   state = {

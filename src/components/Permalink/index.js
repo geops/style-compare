@@ -1,3 +1,3 @@
-import Permalink from './Permalink';
+import Permalink from "./Permalink";
 
 export default Permalink;

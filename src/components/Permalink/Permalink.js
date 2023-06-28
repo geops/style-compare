@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
-import OLMap from 'ol/Map';
-import qs from 'query-string';
-import RSPermalink from 'react-spatial/components/Permalink';
-import { setCenter, setZoom } from '../../store/actions';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+import OLMap from "ol/Map";
+import qs from "query-string";
+import RSPermalink from "react-spatial/components/Permalink";
+import { setCenter, setZoom } from "../../store/actions";
 
 function Permalink({ map }) {
   const dispatch = useDispatch();
