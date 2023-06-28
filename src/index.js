@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 // Core Dependencies
 import React from "react";
-import ReactDOM from "react-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import { createRoot } from "react-dom/client";
 import reducers from "./store/reducers";
 import "abortcontroller-polyfill/dist/abortcontroller-polyfill-only";
 
@@ -23,11 +23,12 @@ const store = createStore(
 
 store.subscribe(() => {});
 
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change

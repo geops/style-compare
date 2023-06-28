@@ -1,8 +1,9 @@
 // Core Functions
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { SwapHoriz } from "@material-ui/icons";
-import { Grid, IconButton, makeStyles } from "@material-ui/core";
+import { SwapHoriz } from "@mui/icons-material";
+import { Grid, IconButton } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import Map from "./components/Map";
 import Permalink from "./components/Permalink";
 
@@ -17,11 +18,11 @@ const useStyles = makeStyles(() => ({
     },
   },
   button: {
-    position: "absolute",
+    position: "absolute !important",
     inset: "25px 0 0 ",
     bottom: "unset",
     width: 50,
-    margin: "auto",
+    margin: "auto !important",
     zIndex: 1000,
   },
   mapLeft: { position: "relative" },

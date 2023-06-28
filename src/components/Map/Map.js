@@ -2,9 +2,10 @@ import React, { useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import OLMap from "ol/Map";
-import { MapboxLayer } from "mobility-toolbox-js/ol";
+import { MaplibreLayer } from "mobility-toolbox-js/ol";
 import BasicMap from "react-spatial/components/BasicMap";
-import { TextField, Grid, makeStyles } from "@material-ui/core";
+import { Grid, TextField } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import Zoom from "react-spatial/components/Zoom";
 import qs from "query-string";
 import { setCenter, setZoom } from "../../store/actions";
@@ -48,7 +49,7 @@ function Map({ map, permalinkParam }) {
       `${window.location.pathname}?${qs.stringify(params)}`,
     );
     // Update layer
-    return new MapboxLayer({
+    return new MaplibreLayer({
       url: tilesUrl,
     });
   }, [tilesUrl, permalinkParam]);

@@ -11,8 +11,11 @@
     "styles"
   ],
   "dependencies": {
-    "@material-ui/core": "4.12.4",
-    "@material-ui/icons": "4.11.3",
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
+    "@mui/icons-material": "5.11.16",
+    "@mui/material": "5.13.6",
+    "@mui/styles": "5.13.2",
     "abortcontroller-polyfill": "1.7.5",
     "i18next": "23.2.3",
     "jest-canvas-mock": "2.5.2",
