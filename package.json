@@ -20,7 +20,7 @@
     "i18next": "23.2.3",
     "jest-canvas-mock": "2.5.2",
     "mapbox-gl": "1.13.2",
-    "maplibre-gl": "3.1.0",
+    "maplibre-gl": "4.6.0",
     "mobility-toolbox-js": "2.0.0-beta.82",
     "ol": "7.4",
     "prop-types": "15.8.1",
